@@ -1,0 +1,1 @@
+var currInvoice = angular.module('curInvoiceModule',[]);

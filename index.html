@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="vendor/angular.min.js"></script>
+	<script src="app/app.js"></script>
+	<script src="controllers/invoiceController.js"></script>
+	<script src="services/currencyService.js"></script>
+</head>
+
+<body>
+	<div class="container" style="width:25%">
+		<h2>Country Invoice</h2>
+	</div>
+	<div ng-app="curInvoiceModule">
+		<div ng-controller="currInvoiceCtrl as ctrl" class="container" style="width:50%">
+			<div class="well">
+				<span class="label label-primary">
+					<label>Quantity</label>
+				</span>
+				<span>
+					<input type="number" ng-model="ctrl.qty" min="1" class="form-control" style="width:35%">
+				</span>
+			</div>
+			<div class="well">
+				<span class="label label-primary">
+					<label>Cost</label>
+				</span>
+				<span>
+					<input type="number" ng-model="ctrl.cost" min="1" class="form-control" style="width:35%">
+				</span>
+				<span>
+					<select ng-model="ctrl.selectedCountry" class="form-control" style="width:35%"> 
+						<option ng-repeat="ctry in ctrl.countries" >{{ctry}}</option>
+					</select>
+				</span>
+			</div>
+
+			<div class="well">
+				<label class="badge" ng-repeat="ctry in ctrl.countries">Cost in {{ctry}}: {{ctrl.total(ctry)}}</label>
+			</div>		
+		</div>
+	</div>
+</body>
+
+</html>
